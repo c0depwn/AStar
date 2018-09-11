@@ -75,9 +75,13 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        // Initialize check boxes with default values
+        // Initialize check boxes with default values 
+        // disable -> feature not supported yet
         this.checkBoxDiagonal.setSelected(diagonalAllowed);
+        this.checkBoxDiagonal.setDisable(true);
+        
         this.checkBoxVisualize.setSelected(visualize);
+        this.checkBoxVisualize.setDisable(true);
         
         // Initalize labels for slider values with default values
         this.valueColumns.setText(String.valueOf(this.columns));

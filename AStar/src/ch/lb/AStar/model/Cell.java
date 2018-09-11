@@ -82,11 +82,11 @@ public class Cell extends Group {
                         
             if (grid.getStart() == null) {
                 isStart = true;
-                bg.setFill(Color.GREEN);
+                bg.setFill(Grid.START_COLOR);
                 grid.setStart(this);
             } else if (grid.getGoal() == null) {
                 isGoal = true;
-                bg.setFill(Color.RED);
+                bg.setFill(Grid.GOAL_COLOR);
                 grid.setGoal(this);
             } else if (!isGoal && !isStart && traversable) {
                 
@@ -100,7 +100,7 @@ public class Cell extends Group {
                 
             }
             
-                        System.out.println(isStart + " " + isGoal + " " + traversable);
+            System.out.println(isStart + " " + isGoal + " " + traversable);
 
                 
         });

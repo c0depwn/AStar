@@ -100,6 +100,12 @@ public class Grid extends Group {
         return this.goal;
     }
     
+    public static final Color START_COLOR = Color.rgb(76, 175, 80);
+    public static final Color GOAL_COLOR = Color.rgb(255, 82, 82);
+    private final Color OPEN_COLOR = Color.rgb(79, 195, 247); // #4fc3f7
+    private final Color CLOSED_COLOR = Color.rgb(255, 235, 59); // #ffeb3b
+    private final Color PATH_COLOR = Color.rgb(245, 127, 23); // #F57F17
+    
     private final int H_V_COST = 10;
     private final int D_COST = 14;
     
@@ -135,23 +141,23 @@ public class Grid extends Group {
                 
                 open.forEach((c) -> {
                     if (c != start && c != goal)
-                        c.setFill(Color.BROWN); // opened set
+                        c.setFill(OPEN_COLOR); // opened set
                 });
         
                 closed.forEach((c) -> {
                     if (c != start && c != goal)
-                        c.setFill(Color.AQUA); // closed set
+                        c.setFill(CLOSED_COLOR); // closed set
                 });
                 
                 for (Cell c : reconstructPath(current)) {
                     if (c != start && c != goal) {
-                        c.setFill(Color.PINK);
+                        c.setFill(PATH_COLOR);
                     }  
                 } 
             }
             
             if (current.isStart) {
-                current.setFill(Color.GREEN);
+                current.setFill(START_COLOR);
             }
             
             open.remove(current);
@@ -218,7 +224,7 @@ public class Grid extends Group {
                     if (!c.isStart && !c.isGoal) {
                         c.setFill(Color.PINK);
                     }
-                    start.setFill(Color.GREEN);
+                    start.setFill(START_COLOR);
                     goal.setFill(Color.RED);
                     
                     //System.out.println(c.getX() + " " + c.getY());
@@ -226,7 +232,7 @@ public class Grid extends Group {
             }
             
             if (current.isStart) {
-                current.setFill(Color.GREEN);
+                current.setFill(START_COLOR);
             }
             
             open.remove(current);
@@ -240,16 +246,26 @@ public class Grid extends Group {
                     
                     int tentativeGCost = gCost.get(current) + calcCost8D(current, neighbor);
                     
+                    if (tentativeGCost < fCost.get(current) || !open.contains(neighbor)) {
+                        gCost.put(neighbor, calcCost8D(current, neighbor));
+                        fCost.put(neighbor, gCost.get(neighbor) + calcHeuristicCost8D(neighbor));
+                        cameFrom.put(neighbor, current);
+                        if (!open.contains(neighbor)) {
+                        open.add(neighbor);
+                    }
+                    }
+                    /*
                     if (!open.contains(neighbor)) {
                         open.add(neighbor);
                     } else if (tentativeGCost >= gCost.get(neighbor)) {
+                        //open.remove(neighbor);
                         break;
                     }
                   
                     cameFrom.put(neighbor, current);
                     gCost.put(neighbor, tentativeGCost);
                     fCost.put(neighbor, gCost.get(neighbor) + calcHeuristicCost8D(neighbor));
-                  
+                  */
                 }
             }
         }     
@@ -259,6 +275,8 @@ public class Grid extends Group {
         int dx = Math.abs(cell.getX() - goal.getX());
         int dy = Math.abs(cell.getY() - goal.getY());
         return H_V_COST * (dx + dy) + (D_COST - 2 * H_V_COST) * Math.min(dx, dy);
+        //Double result = H_V_COST * Math.sqrt(dx*dx+dy*dy);
+        //return result.intValue();
     }
     
     private int calcCost8D(Cell current, Cell neighbor) {

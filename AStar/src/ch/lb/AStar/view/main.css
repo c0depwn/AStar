@@ -14,3 +14,29 @@ and open the template in the editor.
     -fx-background-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(30,30,30,0.6), 15, 0, 0, 5);
 }
+
+.button {
+    -fx-background-color: #B0BEC5;
+}
+
+.button:focused {
+    -fx-background-color: #FF5252;
+}
+
+.slider .track {
+    -fx-background-color: #B0BEC5;
+    -fx-background-insets: 2;    
+}
+
+.slider .thumb {
+    -fx-background-color: #FF5252;
+    -fx-padding: 6;
+}
+
+.check-box .box {
+    -fx-background-color: #B0BEC5;
+}
+
+.check-box:selected .box .mark {
+    -fx-background-color: #FF5252;
+}

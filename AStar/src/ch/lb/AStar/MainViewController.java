@@ -14,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -26,7 +28,6 @@ public class MainViewController implements Initializable {
     
     @FXML
     private Pane gridContainer;
-
     @FXML
     private Slider sliderColumns;
     @FXML
@@ -48,6 +49,10 @@ public class MainViewController implements Initializable {
     @FXML
     private CheckBox checkBoxDiagonal;
    
+    // Stage properties
+    private MainApp mainApp;
+    private double X;
+    private double Y;
     
     // Grid properties
     private Grid grid;
@@ -195,10 +200,23 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void resetAction(ActionEvent event) {
+        
+        // Set max and min for sliders
+        sliderColumns.setMax(40);
+        sliderColumns.setMin(1);
+        sliderRows.setMax(40);
+        sliderRows.setMin(1);
+        sliderCellSize.setMax(50);
+        sliderCellSize.setMin(10);
+        sliderBorder.setMax(5);
+        sliderBorder.setMin(1);
+        
+        // Reset Values
         sliderColumns.setValue(21);
         sliderRows.setValue(16);
         sliderCellSize.setValue(30);
         sliderBorder.setValue(2);
+        
         updateGrid();
     }
 
@@ -213,4 +231,40 @@ public class MainViewController implements Initializable {
         visualize = !visualize;
     }
     
+    /**
+     * Is called by the main application to give a reference back to itself.
+     *
+     * @param mainApp
+     */
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+
+    @FXML
+    private void handleOnMouseDragged(MouseEvent event) {
+        mainApp.getPrimaryStage().setX(event.getScreenX() + X);
+        mainApp.getPrimaryStage().setY(event.getScreenY() + Y);
+    }
+
+    @FXML
+    private void handleMouseDragReleased(MouseDragEvent event) {
+        mainApp.getPrimaryStage().setX(event.getScreenX());
+        mainApp.getPrimaryStage().setY(event.getScreenY());
+    }
+
+    @FXML
+    private void handleMousePressed(MouseEvent event) {
+        X = mainApp.getPrimaryStage().getX() - event.getScreenX();
+        Y = mainApp.getPrimaryStage().getY() - event.getScreenY();
+    }
+
+    @FXML
+    private void handleCloseAction(MouseEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    private void handleMinimizeAction(MouseEvent event) {
+        mainApp.getPrimaryStage().setIconified(true);
+    }
 }

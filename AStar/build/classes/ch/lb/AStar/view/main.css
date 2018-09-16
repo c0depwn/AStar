@@ -8,7 +8,20 @@ and open the template in the editor.
     Author     : LB
 */
 
-.pane {
+.back-pane {
+    -fx-background-color: transparent;
+    -fx-border-radius: 7px;
+   -fx-background-radius: 7px;
+}
+
+.root-pane {
+   -fx-background-color: rgb(53,53,53);
+   -fx-border-radius: 7px;
+   -fx-background-radius: 7px;
+   -fx-effect: dropshadow(gaussian, rgba(30,30,30,0.6), 15, 0, 0, 5);
+}
+
+.container-pane {
     -fx-background-color: white;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
@@ -40,3 +53,4 @@ and open the template in the editor.
 .check-box:selected .box .mark {
     -fx-background-color: #FF5252;
 }
+

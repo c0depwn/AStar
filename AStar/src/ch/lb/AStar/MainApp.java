@@ -5,11 +5,15 @@
  */
 package ch.lb.AStar;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -17,16 +21,43 @@ import javafx.stage.Stage;
  */
 public class MainApp extends Application {
     
+    Stage primaryStage;
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
+        this.primaryStage = stage;
+        this.primaryStage.setResizable(false);
+        this.primaryStage.initStyle(StageStyle.TRANSPARENT);
+      
+        showMainView();
+    }
+    
+    public void showMainView() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("MainView.fxml"));
+            AnchorPane mainView = (AnchorPane) loader.load();
+
+            Scene scene = new Scene(mainView);
+            scene.setFill(Color.TRANSPARENT);
+            
+            MainViewController controller = loader.getController();
+            controller.setMainApp(this);
+
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -269,12 +269,12 @@ public class MainViewController implements Initializable {
     @FXML
     private void handleHelpAction(MouseEvent event) {
         
-        String instructions = "1. Click on the grid to set the start cell. \n"
-                + "2. Click again to set the goal cell. \n"
-                + "3. Click or hold the shift key and drag your mouse over the grid to draw walls.";
+        String instructions = "1.\tClick on the grid to set the start cell. \n"
+                + "2.\tClick again to set the goal cell. \n"
+                + "3.\tClick or hold the shift key and drag your mouse \n\tover the grid to draw walls.";
         
         Alert help = new Alert(AlertType.INFORMATION);   
-        help.setTitle("Instructions");
+        help.setTitle("? Help ?");
         help.setHeaderText("Instructions");
         help.setContentText(instructions);
         help.show();

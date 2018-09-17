@@ -13,11 +13,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1050.0" styleClass="back-pane" stylesheets="@view/main.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.lb.AStar.MainViewController">
+<AnchorPane prefHeight="650.0" prefWidth="1050.0" styleClass="back-pane" stylesheets="@main.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.lb.AStar.controller.MainViewController">
    <children>
-      <AnchorPane layoutX="25.0" layoutY="18.0" prefHeight="615.0" prefWidth="1000.0" styleClass="root-pane" stylesheets="@view/main.css">
+      <AnchorPane layoutX="25.0" layoutY="18.0" prefHeight="615.0" prefWidth="1000.0" styleClass="root-pane" stylesheets="@main.css">
          <children>
-            <Pane layoutX="15.0" layoutY="30.0" prefHeight="250.0" prefWidth="250.0" styleClass="container-pane" stylesheets="@view/main.css">
+            <Pane layoutX="15.0" layoutY="30.0" prefHeight="250.0" prefWidth="250.0" styleClass="container-pane" stylesheets="@main.css">
                <children>
                   <GridPane layoutX="15.0" layoutY="15.0" prefHeight="220.0" prefWidth="220.0">
                     <columnConstraints>
@@ -54,7 +54,7 @@
                   </GridPane>
                </children>
             </Pane>
-            <Pane layoutX="15.0" layoutY="295.0" prefHeight="305.0" prefWidth="250.0" styleClass="container-pane" stylesheets="@view/main.css">
+            <Pane layoutX="15.0" layoutY="295.0" prefHeight="305.0" prefWidth="250.0" styleClass="container-pane" stylesheets="@main.css">
                <children>
                   <Label layoutX="15.0" layoutY="15.0" text="Info" />
                   <Button layoutX="15.0" layoutY="263.0" mnemonicParsing="false" onAction="#solveAction" text="Find Path" />
@@ -73,7 +73,7 @@
                   <Text layoutX="50.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wall " />
                </children>
             </Pane>
-            <Pane fx:id="gridContainer" layoutX="280.0" layoutY="30.0" prefHeight="570.0" prefWidth="705.0" styleClass="container-pane" stylesheets="@view/main.css" />
+            <Pane fx:id="gridContainer" layoutX="280.0" layoutY="30.0" prefHeight="570.0" prefWidth="705.0" styleClass="container-pane" stylesheets="@main.css" />
             <Pane layoutX="5.0" onMouseDragReleased="#handleMouseDragReleased" onMouseDragged="#handleOnMouseDragged" onMousePressed="#handleMousePressed" prefHeight="30.0" prefWidth="990.0" />
             <Circle fill="#ff554e" layoutX="15.0" layoutY="15.0" onMouseClicked="#handleCloseAction" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
             <Circle fill="#ffb429" layoutX="37.0" layoutY="15.0" onMouseClicked="#handleMinimizeAction" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />

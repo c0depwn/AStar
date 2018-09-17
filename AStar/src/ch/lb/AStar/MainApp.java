@@ -5,10 +5,10 @@
  */
 package ch.lb.AStar;
 
+import ch.lb.AStar.controller.MainViewController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -36,7 +36,7 @@ public class MainApp extends Application {
         try {
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("MainView.fxml"));
+            loader.setLocation(MainApp.class.getResource("view/MainView.fxml"));
             AnchorPane mainView = (AnchorPane) loader.load();
 
             Scene scene = new Scene(mainView);

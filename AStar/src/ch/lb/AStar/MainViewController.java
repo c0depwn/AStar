@@ -11,6 +11,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -202,14 +204,10 @@ public class MainViewController implements Initializable {
     private void resetAction(ActionEvent event) {
         
         // Set max and min for sliders
-        sliderColumns.setMax(40);
-        sliderColumns.setMin(1);
+        sliderColumns.setMax(40); 
         sliderRows.setMax(40);
-        sliderRows.setMin(1);
         sliderCellSize.setMax(50);
-        sliderCellSize.setMin(10);
         sliderBorder.setMax(5);
-        sliderBorder.setMin(1);
         
         // Reset Values
         sliderColumns.setValue(21);
@@ -266,5 +264,19 @@ public class MainViewController implements Initializable {
     @FXML
     private void handleMinimizeAction(MouseEvent event) {
         mainApp.getPrimaryStage().setIconified(true);
+    }
+
+    @FXML
+    private void handleHelpAction(MouseEvent event) {
+        
+        String instructions = "1. Click on the grid to set the start cell. \n"
+                + "2. Click again to set the goal cell. \n"
+                + "3. Click or hold the shift key and drag your mouse over the grid to draw walls.";
+        
+        Alert help = new Alert(AlertType.INFORMATION);   
+        help.setTitle("Instructions");
+        help.setHeaderText("Instructions");
+        help.setContentText(instructions);
+        help.show();
     }
 }

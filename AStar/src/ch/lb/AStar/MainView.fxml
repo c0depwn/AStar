@@ -37,9 +37,9 @@
                         <Label text="Columns" />
                         <Label text="Rows" GridPane.rowIndex="1" />
                         <Label text="Cell Border" GridPane.rowIndex="3" />
-                        <Slider fx:id="sliderColumns" min="1.0" prefHeight="15.0" prefWidth="100.0" value="50.0" GridPane.columnIndex="2" />
-                        <Slider fx:id="sliderRows" prefHeight="15.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Slider fx:id="sliderBorder" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Slider fx:id="sliderColumns" blockIncrement="1.0" majorTickUnit="4.0" max="40.0" min="1.0" minorTickCount="1" prefHeight="15.0" prefWidth="100.0" showTickMarks="true" value="21.0" GridPane.columnIndex="2" />
+                        <Slider fx:id="sliderRows" blockIncrement="1.0" majorTickUnit="4.0" max="40.0" min="1.0" minorTickCount="1" prefHeight="15.0" prefWidth="100.0" showTickMarks="true" value="16.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Slider fx:id="sliderBorder" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" showTickMarks="true" value="2.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <Label text="Visualize" GridPane.rowIndex="5" />
                         <CheckBox fx:id="checkBoxVisualize" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#visualizeClicked" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                         <Label fx:id="valueColumns" text="0" GridPane.columnIndex="1" />
@@ -47,9 +47,9 @@
                         <Label fx:id="valueBorder" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Cell Size" GridPane.rowIndex="2" />
                         <Label fx:id="valueCellSize" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Slider fx:id="sliderCellSize" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Label text="Diagonal Allowed" GridPane.rowIndex="4" />
-                        <CheckBox fx:id="checkBoxDiagonal" mnemonicParsing="false" onAction="#diagonalClicked" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Slider fx:id="sliderCellSize" blockIncrement="1.0" majorTickUnit="5.0" max="50.0" min="10.0" minorTickCount="1" showTickMarks="true" value="30.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label disable="true" text="Diagonal Allowed" GridPane.rowIndex="4" />
+                        <CheckBox fx:id="checkBoxDiagonal" disable="true" mnemonicParsing="false" onAction="#diagonalClicked" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </children>
@@ -77,7 +77,7 @@
             <Pane layoutX="5.0" onMouseDragReleased="#handleMouseDragReleased" onMouseDragged="#handleOnMouseDragged" onMousePressed="#handleMousePressed" prefHeight="30.0" prefWidth="990.0" />
             <Circle fill="#ff554e" layoutX="15.0" layoutY="15.0" onMouseClicked="#handleCloseAction" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
             <Circle fill="#ffb429" layoutX="37.0" layoutY="15.0" onMouseClicked="#handleMinimizeAction" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-            <Label layoutX="913.0" layoutY="6.0" text="Need Help?" textAlignment="RIGHT" textFill="WHITE" />
+            <Label layoutX="913.0" layoutY="6.0" onMouseClicked="#handleHelpAction" text="Need Help?" textAlignment="RIGHT" textFill="WHITE" />
          </children></AnchorPane>
    </children>
 </AnchorPane>
